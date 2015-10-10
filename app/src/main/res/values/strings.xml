@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">MA4</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">MainActivity</string>
+    <string name="title_activity_register">Registration</string>
+    <string name="title_activity_welcome">Welcome1</string>
+
+
+    <string name="skillA_prompt">Select your skill</string>
+
+    <string-array name="skillA_array">
+        <item>Exercise</item>
+        <item>Cooking</item>
+        <item>Computer</item>
+        <item>Arts</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+</resources>
