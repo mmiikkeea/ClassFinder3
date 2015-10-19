@@ -20,4 +20,6 @@
         <item>Uranus</item>
         <item>Neptune</item>
     </string-array>
+    <string name="title_activity_web_view">WebView</string>
+    <string name="title_activity_maps">Maps</string>
 </resources>

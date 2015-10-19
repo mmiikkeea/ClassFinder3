@@ -3,7 +3,6 @@
     package="com.example.mikechen.ma4" >
 
     <application
-
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -17,18 +16,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Welcome1"
-                  android:label="@string/app_name"></activity>
-
-        <activity android:name=".Registration"
-                  android:label="@string/title_activity_register">
-            </activity>
-        <activity android:name=".Addskin"
-                  android:label="Addskin">
-
+        <activity
+            android:name=".Welcome1"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".Registration"
+            android:label="@string/title_activity_register" >
+        </activity>
+        <activity
+            android:name=".Addskin"
+            android:label="Addskin" >
+        </activity>
+        <activity
+            android:name=".WebView"
+            android:label="@string/title_activity_web_view" >
+        </activity>
+        <activity
+            android:name=".Maps"
+            android:label="@string/title_activity_maps" >
         </activity>
 
-
+        <service
+            android:name=".MyInternetService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
     </application>
 
 </manifest>
