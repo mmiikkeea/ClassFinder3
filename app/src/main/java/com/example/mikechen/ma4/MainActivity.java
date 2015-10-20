@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -24,8 +25,14 @@ public class MainActivity extends Activity implements OnClickListener
 
     DBHelper DB = null;
 
+    private static final String TAG="MainActivity";
+
     /** Called when the activity is first created. */
     @Override
+    public void onStart(){
+        super.onStart();
+        Log.d(TAG, "onStart()called");
+    }
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -39,6 +46,14 @@ public class MainActivity extends Activity implements OnClickListener
         mLogin = (Button)findViewById(R.id.login);
         mLogin.setOnClickListener(this);
 
+    }
+    public void onPause(){
+        super.onPause();
+        Log.d(TAG, "onPause()called");
+    }
+    public void onStop(){
+        super.onStop();
+        Log.d(TAG, "onStop()called");
     }
 
 
@@ -129,6 +144,7 @@ public class MainActivity extends Activity implements OnClickListener
     public void onDestroy()
     {
         super.onDestroy();
+        Log.d(TAG, "onStop()called");
         DB.close();
     }
 }

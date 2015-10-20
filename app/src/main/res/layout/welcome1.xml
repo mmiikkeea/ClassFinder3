@@ -5,7 +5,6 @@
 
               android:orientation="vertical" >
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
@@ -31,14 +30,44 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:onClick="search"
-        android:text="Let's Go" />
+        android:text="Reference buttton" />
+
+    <Button
+        android:id="@+id/buttonFindClass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:onClick="search"
+        android:text="Find Class" />
+
+    <Button
+        android:id="@+id/buttonAddDrop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:onClick="search"
+        android:text="Add/Drop" />
+    <Button
+        android:id="@+id/buttonSchedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:onClick="search"
+        android:text="Schedule" />
+    <Button
+        android:id="@+id/buttonSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:onClick="search"
+        android:text="Setting" />
     <Button
         android:id="@+id/buttonSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:onClick="search"
-        android:text="View Details" />
+        android:text="View User Details" />
 
     <ListView
         android:id="@android:id/list"
