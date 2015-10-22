@@ -7,6 +7,10 @@
     <string name="title_activity_register">Registration</string>
     <string name="title_activity_welcome">Welcome1</string>
 
+    <string name="Find_Class">Find Class</string>
+    <string name="Add_Drop">Add/Drop</string>
+    <string name="Schedule">Schedule</string>
+    <string name="Settings">Settings</string>
 
     <string name="skillA_prompt">Select your skill</string>
 
