@@ -77,7 +77,7 @@ public class MainActivity extends Activity implements OnClickListener
                     if(validLogin)
                     {
                         System.out.println("In Valid");
-                        Intent in = new Intent(getBaseContext(), Welcome1.class);
+                        Intent in = new Intent(getBaseContext(), Home.class);
                         in.putExtra("UserName", muname.getText().toString());
                         startActivity(in);
                         //finish();

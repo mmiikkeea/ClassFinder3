@@ -35,6 +35,14 @@
             android:name=".Maps"
             android:label="@string/title_activity_maps" >
         </activity>
+        <activity
+            android:name=".Home"
+            android:label="Home" >
+        </activity>
+        <activity
+            android:name=".Find_Class"
+            android:label="Find_Class" >
+        </activity>
 
         <service
             android:name=".MyInternetService"

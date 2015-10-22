@@ -12,6 +12,14 @@
     <string name="Schedule">Schedule</string>
     <string name="Settings">Settings</string>
 
+    <string name="option1">Option 1</string>
+    <string name="option2">Option 2</string>
+    <string name="option3">Option 3</string>
+    <string name="save">save</string>
+
+    <string name="map">Map</string>
+    <string name="information">Information</string>
+
     <string name="skillA_prompt">Select your skill</string>
 
     <string-array name="skillA_array">
