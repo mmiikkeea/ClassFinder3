@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+    android:gravity="center_vertical">
+    <TextView
+        android:id="@+id/schedulerLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scheduler"
+        android:layout_marginBottom="20dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_gravity="center_horizontal"
+
+        />
+    <EditText
+        android:id="@+id/EditCourseNum"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+       android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        />
+    <TextView
+        android:id="@+id/CourseNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Entern the course number"
+        android:layout_marginBottom="20dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/abc_action_bar_content_inset_material"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        >
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:layout_marginRight="5dp"
+
+        />
+    <Button
+        android:id="@+id/btnDrop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Drop"
+        android:layout_marginLeft="5dp"
+
+        />
+    </LinearLayout>
+</LinearLayout>
