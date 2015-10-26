@@ -20,18 +20,13 @@
     <string name="map">Map</string>
     <string name="information">Information</string>
 
-    <string name="skillA_prompt">Select your skill</string>
+    <string name="CourseNum">CourseNum</string>
+    <string name="EditCourseNum">EditCourseNum</string>
+    <string name="scheduleColumn">column</string>
+    <string name="btnAdd">Add</string>
+    <string name="btnDrop">Drop</string>
 
-    <string-array name="skillA_array">
-        <item>Exercise</item>
-        <item>Cooking</item>
-        <item>Computer</item>
-        <item>Arts</item>
-        <item>Jupiter</item>
-        <item>Saturn</item>
-        <item>Uranus</item>
-        <item>Neptune</item>
-    </string-array>
+
     <string name="title_activity_web_view">WebView</string>
     <string name="title_activity_maps">Maps</string>
 </resources>
