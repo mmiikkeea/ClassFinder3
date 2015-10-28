@@ -19,8 +19,7 @@ public class DBHelper extends SQLiteOpenHelper
     public static final String KEY_USER = "username";
     public static final String KEY_REGISTER_DATE="register_date";
 //    public static final String KEY_EMAIL = "email";
-    public static final String KEY_SKILL="skill";
-    public static final String KEY_INTEREST="interest";
+
 
 
     DBHelper DB = null;
@@ -102,16 +101,6 @@ public class DBHelper extends SQLiteOpenHelper
 
 
     }
-    /*
-    public long insertSkillInterest(Addskin addskin){
-        ContentValues cv= new ContentValues();
-        cv.put(KEY_SKILL,addskin.getSkill1());
-        cv.put(KEY_INTEREST,addskin.getInterest());
 
-//        should I input all of the data here?
-        return getWritableDatabase().insert(DATABASE_TABLE_SKILLINTEREST,null,cv);
-
-    }
-*/
 
 }

@@ -33,7 +33,7 @@ public class Scheduler extends Activity implements OnClickListener{
         dropBtn = (Button)findViewById(R.id.btnDrop);
         dropBtn.setOnClickListener(this);
 
-        
+
         courseNumber = (EditText)findViewById(R.id.EditCourseNum);
 
     }

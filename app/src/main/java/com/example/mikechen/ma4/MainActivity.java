@@ -1,7 +1,9 @@
 package com.example.mikechen.ma4;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -16,6 +18,12 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener
 {
+
+    SharedPreferences pref;
+   SharedPreferences.Editor editor;
+    SessionManager session;
+
+
 
     Button mLogin;
     Button mRegister;
@@ -32,12 +40,16 @@ public class MainActivity extends Activity implements OnClickListener
     public void onStart(){
         super.onStart();
         Log.d(TAG, "onStart()called");
+
     }
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-//        Log.d(TAG,"onCreate Called!!!");
+        Log.d(TAG,"onCreate Called!!!");
         setContentView(R.layout.main);
+
+        session = new SessionManager(getApplicationContext());
+//        Toast.makeText(getApplicationContext(), "User Login Status: " + session.isLoggedIn(), Toast.LENGTH_LONG).show();
 
 
         mRegister = (Button)findViewById(R.id.register);
@@ -46,7 +58,11 @@ public class MainActivity extends Activity implements OnClickListener
         mLogin = (Button)findViewById(R.id.login);
         mLogin.setOnClickListener(this);
 
+        //check login status
+        session.checkLogin();
+
     }
+
     public void onPause(){
         super.onPause();
         Log.d(TAG, "onPause()called");
@@ -77,7 +93,6 @@ public class MainActivity extends Activity implements OnClickListener
                 String password = mpassword.getText().toString();
 
 
-
                 if(username.equals("") || username == null)
                 {
                     Toast.makeText(getApplicationContext(), "Please enter User Name", Toast.LENGTH_SHORT).show();
@@ -92,12 +107,14 @@ public class MainActivity extends Activity implements OnClickListener
                     if(validLogin)
                     {
                         System.out.println("In Valid");
+                        session.createLoginSession(username);
                         Intent in = new Intent(getBaseContext(), Home.class);
                         in.putExtra("UserName", muname.getText().toString());
                         startActivity(in);
                         //finish();
                     }
                 }
+
                 break;
 
         }
@@ -146,5 +163,9 @@ public class MainActivity extends Activity implements OnClickListener
         super.onDestroy();
         Log.d(TAG, "onStop()called");
         DB.close();
+    }
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }

@@ -16,6 +16,7 @@ public class Home extends Activity implements OnClickListener {
     Button mAddDrop;
     Button mSchedule;
     Button mSettings;
+    SessionManager session;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -51,6 +52,10 @@ public class Home extends Activity implements OnClickListener {
             case R.id.Settings:
                 break;
         }
+    }
+    public void onBackPressed() {
+        finish();
+        session.logoutUser();
     }
 
 }
