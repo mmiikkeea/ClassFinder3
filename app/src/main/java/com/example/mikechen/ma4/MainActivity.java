@@ -144,7 +144,7 @@ public class MainActivity extends Activity implements OnClickListener
     public void onDestroy()
     {
         super.onDestroy();
-        Log.d(TAG, "onStop()called");
+        Log.d(TAG, "onDestroy()called");
         DB.close();
     }
 }

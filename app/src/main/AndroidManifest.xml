@@ -41,6 +41,9 @@
                   android:label="Scheduler">
 
         </activity>
+        <activity android:name=".Schedule_ListView"
+                  android:label="Scheduler_ListView">
+        </activity>
         <service
             android:name=".MyInternetService"
             android:enabled="true"

@@ -30,7 +30,7 @@ public class DBHelper extends SQLiteOpenHelper
 
     public static final String DATABASE_TABLE_REGISTER = "registerTB";
     private static final String CREATE_TABLE_REGISTER =
-            "CREATE TABLE " + DATABASE_TABLE_REGISTER + "(" +
+            "CREATE TABLE IF NOT EXISTS " + DATABASE_TABLE_REGISTER + "(" +
                     "_id INTEGER PRIMARY KEY AUTOINCREMENT,"+
                     "firstname TEXT NOT NULL, lastname TEXT NOT NULL, gender TEXT NOT NULL, username TEXT NOT NULL," +
                     " password TEXT NOT NULL);";
@@ -38,10 +38,13 @@ public class DBHelper extends SQLiteOpenHelper
     //    another tabel about skill and interest
     private static final String DATABASE_TABLE_SKILLINTEREST="skillinterestTB";
     private static final String CREATE_TABLE_SKIN=
-            "CREATE TABLE"+DATABASE_TABLE_SKILLINTEREST+"("+
+            "CREATE TABLE IF NOT EXISTS "+DATABASE_TABLE_SKILLINTEREST+"("+
                     "_id TEXT NOT NULL,skill TEXT NOT NULL, interest TEXT NOT NULL);";
 // HOW TO SET ID ARE THE SAME IN BOTH TABLE?
 //    ans: use sql to add the value from XXX to YYY
+    public static final String DATABASE_TABLE_SCHEDULE_CLASSES="scheduleTB";
+    private static final String CREATE_TABLE_SCHEDULE_CLASSES = "CREATE TABLE IF NOT EXISTS "+DATABASE_TABLE_SCHEDULE_CLASSES+"("+
+        "name TEXT NOT NULL, number INT NOT NULL, PRIMARY KEY (name, number));";
     private static DBHelper instance;
 
 
@@ -60,9 +63,11 @@ public class DBHelper extends SQLiteOpenHelper
     @Override
     public void onCreate(SQLiteDatabase db) {
 
+        this.db = db;
         try{
             db.execSQL(CREATE_TABLE_REGISTER);
             db.execSQL(CREATE_TABLE_SKIN);
+            db.execSQL(CREATE_TABLE_SCHEDULE_CLASSES);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -76,7 +81,7 @@ public class DBHelper extends SQLiteOpenHelper
 
     public Cursor rawQuery(String string, String[] strings) {
         // TODO Auto-generated method stub
-        return null;
+        return db.rawQuery(string, strings);
     }
 
     public void open() {
