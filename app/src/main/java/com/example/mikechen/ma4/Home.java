@@ -43,11 +43,16 @@ public class Home extends Activity implements OnClickListener {
                 startActivity(in);
                 break;
             case R.id.Add_Drop:
+                Intent ad=new Intent(getBaseContext(), Scheduler.class);
+                startActivity(ad);
+
                 break;
             case R.id.Schedule:
                 Intent sc=new Intent(getBaseContext(), Schedule_ListView.class);
+
                 startActivity(sc);
                 break;
+
             case R.id.Settings:
                 break;
         }

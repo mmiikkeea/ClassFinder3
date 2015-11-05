@@ -29,4 +29,8 @@
 
     <string name="title_activity_web_view">WebView</string>
     <string name="title_activity_maps">Maps</string>
+
+    <string name="course">course</string>
+    <string name="tableLayout1">tableLayout</string>
+
 </resources>

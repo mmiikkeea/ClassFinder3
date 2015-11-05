@@ -62,15 +62,23 @@ public class Scheduler extends Activity implements OnClickListener{
     public void addCourse(String coursenum){
         SQLiteDatabase db = DB.getWritableDatabase();
 //        SQLiteDatabaseDatabase db= DD.createRegister(values);
-
-
         ContentValues values = new ContentValues();
         values.put("course", coursenum);
 
+        // Create a new map of values, where column names are the keys
+        String course_num=courseNumber.getText().toString();
+
+        values.put(DBHelper.KEY_CLASS_NUM, course_num);
+        values.put(DBHelper.KEY_PROF,"ALEX");
+        values.put(DBHelper.KEY_TIMES,"M,W,F");
+        values.put(DBHelper.KEY_ENRLD,"30");
+        values.put(DBHelper.KEY_LIMIT,"50");
+
+// Insert the new row, returning the primary key value of the new row
 
         try
         {
-            db.insert(DBHelper.DATABASE_TABLE_REGISTER, null, values);
+            db.insert(DBHelper.DATABASE_TABLE_COURSE, null, values);
             // need to create a new table
 
             Toast.makeText(getApplicationContext(), "your details submitted Successfully...", Toast.LENGTH_SHORT).show();
