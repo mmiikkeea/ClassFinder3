@@ -64,7 +64,7 @@ public class Schedule_ListView extends Activity implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.schedule_add:
-                Schedule_Class c = new Schedule_Class("name", i, null);
+                Schedule_Class c = new Schedule_Class("", (double)i, (double)i+1, "", null);
                 addItems(c);
                 break;
         }

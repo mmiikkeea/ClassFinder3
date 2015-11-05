@@ -39,6 +39,8 @@ public class MainActivity extends Activity implements OnClickListener
 //        Log.d(TAG,"onCreate Called!!!");
         setContentView(R.layout.main);
 
+        DB = new DBHelper(getBaseContext());
+        DB.onCreate(DB.getWritableDatabase());
 
         mRegister = (Button)findViewById(R.id.register);
         mRegister.setOnClickListener(this);
@@ -107,7 +109,6 @@ public class MainActivity extends Activity implements OnClickListener
 
     private boolean validateLogin(String username, String password, Context baseContext)
     {
-        DB = new DBHelper(getBaseContext());
         SQLiteDatabase db = DB.getReadableDatabase();
 
         String[] columns = {"_id"};

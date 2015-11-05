@@ -23,13 +23,13 @@ public class Schedule_Classes {
     }
 
     public void AddClass(Schedule_Class scheduleClass){
-        int i = getCount(scheduleClass.Name);
+        int i = getCount(scheduleClass.CourseNumber, scheduleClass.SectionNumber);
 
         SQLiteDatabase db = DB.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put("name", scheduleClass.Name);
-        values.put("number", scheduleClass.Number);
+        values.put("course_number", scheduleClass.CourseNumber);
+        values.put("section_number", scheduleClass.SectionNumber);
 
         if (i != 0) {
             try {
@@ -38,17 +38,18 @@ public class Schedule_Classes {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            SyncClasses();
+            SyncClasses(scheduleClass.CourseNumber, scheduleClass.SectionNumber);
         }
     }
 
-    private int getCount(String name) {
+    private int getCount(double courseNumber, double sectionNumber) {
         SQLiteDatabase db = null;
         Cursor c = null;
         try {
             db = DB.getReadableDatabase();
-            String query = "select count(*) from " + DBHelper.DATABASE_TABLE_SCHEDULE_CLASSES + " where name = " + name;
-            c = db.rawQuery(query, new String[] {"name"});
+            String query = "select count(*) from " + DBHelper.DATABASE_TABLE_SCHEDULE_CLASSES + " where course_number = "
+                    + courseNumber + " AND section_number = " + sectionNumber;
+            c = db.rawQuery(query, new String[] {"course_number, section_number"});
             if (c.moveToFirst()) {
                 return c.getInt(0);
             }
@@ -59,14 +60,17 @@ public class Schedule_Classes {
         }
     }
 
-    private void SyncClasses(){
-        String sql = "SELECT * FROM " + DBHelper.DATABASE_TABLE_SCHEDULE_CLASSES;
+    private void SyncClasses(double section_number, double course_number){
+        String sql = "SELECT * FROM " + DBHelper.DATABASE_TABLE_CLASSES + "WHERE section_number = "
+                + section_number + "course_number = " + course_number;
         Cursor cursor = DB.rawQuery(sql, null);
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
-                String str = cursor.getString(0);
-                int i = cursor.getInt(1);
-                Schedule_Class c = new Schedule_Class(str, i, null);
+                String name = cursor.getString(0);
+                double course = cursor.getDouble(1);
+                double section = cursor.getDouble(2);
+                String teacher = cursor.getString(3);
+                Schedule_Class c = new Schedule_Class(name, course, section, teacher, null);
                 Classes.add(c);
                 cursor.moveToNext();
             }

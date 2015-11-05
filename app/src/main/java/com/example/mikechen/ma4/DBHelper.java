@@ -42,9 +42,16 @@ public class DBHelper extends SQLiteOpenHelper
                     "_id TEXT NOT NULL,skill TEXT NOT NULL, interest TEXT NOT NULL);";
 // HOW TO SET ID ARE THE SAME IN BOTH TABLE?
 //    ans: use sql to add the value from XXX to YYY
+    public static final String DATABASE_TABLE_CLASSES="classesTB";
+    private static final String CREATE_TABLE_CLASSES = "CREATE TABLE IF NOT EXISTS "
+            + DATABASE_TABLE_CLASSES + "(" + "name TEXT NOT NULL, course_number DOUBLE NOT NULL, "
+            + "section_number DOUBLE NOT NULL, teacher TEXT NOT NULL, "
+            + "PRIMARY KEY (course_number, section_number));";
     public static final String DATABASE_TABLE_SCHEDULE_CLASSES="scheduleTB";
     private static final String CREATE_TABLE_SCHEDULE_CLASSES = "CREATE TABLE IF NOT EXISTS "+DATABASE_TABLE_SCHEDULE_CLASSES+"("+
-        "name TEXT NOT NULL, number INT NOT NULL, PRIMARY KEY (name, number));";
+        "course_number DOUBLE NOT NULL, section_number DOUBLE NOT NULL, FOREIGN KEY(course_number) REFERENCES " +
+        DATABASE_TABLE_CLASSES + "(course_number)" + ", FOREIGN KEY(section_number) " +
+        DATABASE_TABLE_CLASSES + "(section_number));";
     private static DBHelper instance;
 
 
@@ -67,6 +74,7 @@ public class DBHelper extends SQLiteOpenHelper
         try{
             db.execSQL(CREATE_TABLE_REGISTER);
             db.execSQL(CREATE_TABLE_SKIN);
+            db.execSQL(CREATE_TABLE_CLASSES);
             db.execSQL(CREATE_TABLE_SCHEDULE_CLASSES);
         }catch(Exception e){
             e.printStackTrace();
