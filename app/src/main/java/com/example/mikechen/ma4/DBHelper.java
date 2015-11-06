@@ -48,7 +48,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String DATABASE_TABLE_COURSE="courseTB";
     private static final String CREATE_TABLE_COURSE =
             "CREATE TABLE IF NOT EXISTS "+DATABASE_TABLE_COURSE+"("+KEY_CLASS_NUM+" INTEGER PRIMARY KEY, "+ KEY_SECTION_NUM +
-                    " INTEGER PRIMARY KEY, "+ KEY_PROF + " TEXT NOT NULL, "+
+                    " INTEGER NOT NULL, "+ KEY_PROF + " TEXT NOT NULL, "+
                     KEY_TIMES + " TEXT NOT NULL, " +KEY_ENRLD+" INT NOT NULL, "+KEY_LIMIT+" INT NOT NULL);";
 
     //  Schedule Table
