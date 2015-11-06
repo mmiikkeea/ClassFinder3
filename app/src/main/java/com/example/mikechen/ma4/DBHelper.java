@@ -79,7 +79,6 @@ public class DBHelper extends SQLiteOpenHelper {
         try{
             db.execSQL(CREATE_TABLE_COURSE);
             db.execSQL(CREATE_TABLE_REGISTER);
-            db.execSQL(CREATE_TABLE_COURSE);
             db.execSQL(CREATE_TABLE_SCHEDULE_CLASSES);
 
         }catch(Exception e){
