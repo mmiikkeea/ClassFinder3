@@ -20,6 +20,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 //    course table attribute
     public static final String KEY_CLASS_NUM= "class_num";
+    public static final String KEY_SECTION_NUM= "section_num";
     public static final String KEY_PROF="prof_name";
     public static final String KEY_TIMES="times";
     public static final String KEY_ENRLD="enrld_ple";
@@ -43,26 +44,19 @@ public class DBHelper extends SQLiteOpenHelper {
 
 // HOW TO SET ID ARE THE SAME IN BOTH TABLE?
 //    ans: use sql to add the value from XXX to YYY
-    public static final String DATABASE_TABLE_CLASSES="classesTB";
-    private static final String CREATE_TABLE_CLASSES = "CREATE TABLE IF NOT EXISTS "
-            + DATABASE_TABLE_CLASSES + "(" + "name TEXT NOT NULL, course_number DOUBLE NOT NULL, "
-            + "section_number DOUBLE NOT NULL, teacher TEXT NOT NULL, "
-            + "PRIMARY KEY (course_number, section_number));";
-    public static final String DATABASE_TABLE_SCHEDULE_CLASSES="scheduleTB";
-    private static final String CREATE_TABLE_SCHEDULE_CLASSES = "CREATE TABLE IF NOT EXISTS "+DATABASE_TABLE_SCHEDULE_CLASSES+"("+
-        "name TEXT NOT NULL, number INT NOT NULL, PRIMARY KEY (name, number));";
-
-
     //    course table
     public static final String DATABASE_TABLE_COURSE="courseTB";
     private static final String CREATE_TABLE_COURSE =
-            "CREATE TABLE IF NOT EXISTS"+DATABASE_TABLE_COURSE+"("+KEY_CLASS_NUM+" INTEGER PRIMARY KEY,"+ KEY_PROF+ "TEXT NOT NULL,"+
-                    KEY_TIMES+"TEXT NOT NULL," +KEY_ENRLD+"INT NOT NULL,"+KEY_LIMIT+"INT NOT NULL);";
+            "CREATE TABLE IF NOT EXISTS "+DATABASE_TABLE_COURSE+"("+KEY_CLASS_NUM+" INTEGER PRIMARY KEY, "+ KEY_SECTION_NUM +
+                    " INTEGER PRIMARY KEY, "+ KEY_PROF + " TEXT NOT NULL, "+
+                    KEY_TIMES + " TEXT NOT NULL, " +KEY_ENRLD+" INT NOT NULL, "+KEY_LIMIT+" INT NOT NULL);";
 
+    //  Schedule Table
+    public static final String DATABASE_TABLE_SCHEDULE_CLASSES="scheduleTB";
+    private static final String CREATE_TABLE_SCHEDULE_CLASSES = "CREATE TABLE IF NOT EXISTS "+DATABASE_TABLE_SCHEDULE_CLASSES+"("+
+        "number INT NOT NULL, FOREIGN KEY (course_number) REFERENCES " + DATABASE_TABLE_COURSE + "(" + KEY_CLASS_NUM + ")," +
+            " FOREIGN KEY (section_number) REFERENCES " + DATABASE_TABLE_COURSE + "(" + KEY_SECTION_NUM + "));";
 
-        "course_number DOUBLE NOT NULL, section_number DOUBLE NOT NULL, FOREIGN KEY(course_number) REFERENCES " +
-        DATABASE_TABLE_CLASSES + "(course_number)" + ", FOREIGN KEY(section_number) " +
-        DATABASE_TABLE_CLASSES + "(section_number));";
     private static DBHelper instance;
 
 
@@ -85,8 +79,7 @@ public class DBHelper extends SQLiteOpenHelper {
         try{
             db.execSQL(CREATE_TABLE_COURSE);
             db.execSQL(CREATE_TABLE_REGISTER);
-            db.execSQL(CREATE_TABLE_SKIN);
-            db.execSQL(CREATE_TABLE_CLASSES);
+            db.execSQL(CREATE_TABLE_COURSE);
             db.execSQL(CREATE_TABLE_SCHEDULE_CLASSES);
 
         }catch(Exception e){

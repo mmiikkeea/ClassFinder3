@@ -61,7 +61,7 @@ public class Schedule_Classes {
     }
 
     private void SyncClasses(double section_number, double course_number){
-        String sql = "SELECT * FROM " + DBHelper.DATABASE_TABLE_CLASSES + "WHERE section_number = "
+        String sql = "SELECT * FROM " + DBHelper.DATABASE_TABLE_COURSE + "WHERE section_number = "
                 + section_number + "course_number = " + course_number;
         Cursor cursor = DB.rawQuery(sql, null);
         if (cursor.moveToFirst()) {
